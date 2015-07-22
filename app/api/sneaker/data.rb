@@ -18,16 +18,23 @@ module Sneaker
       #  end
       get 'filter' do
         puts "fuck1"
-        if params[:name].blank? == false
-          puts "fuck2"
-          return SneakerData.where("name LIKE ?", "%#{params[:name]}%")
-          puts params[:name]
-        end
-        if params[:brand].blank? == false
-          puts "fuck3"
-          return SneakerData.where("name LIKE ?", "%#{params[:name]}%").where("brand like ?","%#{params[:brand]}%")
+        @results = SneakerData.where(nil) # creates an anonymous scope
+        @results = @results.name_param(params[:name]) if params[:name].present?
+        @results = @results.brand_param(params[:brand]) if params[:brand].present?
+        @results = @results.sneakertype_param(params[:sneakertype]) if params[:sneakertype].present?
+        @results = @results.gender_param(params[:gender]) if params[:gender].present?
+        @results = @results.colour_param(params[:colour]) if params[:colour].present?
+        return @results
+        #if params[:name].blank? == false
+        #  puts "fuck2"
+        #  return SneakerData.where("name LIKE ?", "%#{params[:name]}%")
+        #  puts params[:name]
+        #end
+        #if params[:brand].blank? == false
+        #  puts "fuck3"
+        #  return SneakerData.where("name LIKE ?", "%#{params[:name]}%").where("brand like ?","%#{params[:brand]}%")
         #SneakerData = SneakerData.where("name LIKE ? AND brand like ?", "%#{params[:name]}%", "%#{params[:brand]}%")
-        end
+        #end
       end
       desc "create a new sneaker"
       params do
