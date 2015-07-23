@@ -1,0 +1,24 @@
+****Planing****
+
+Stage 1,
+
+Mobile API
+	- RESTFUL API 
+	- Template to display API
+	
+Stage 2,	
+
+Backend
+	- Uploda Record Interface
+	- Upload CSV / Excel to upload database
+	- Upload Photo
+	
+Stage 3,
+
+User Login And Oauth
+	- Sign in 
+	- Sign up
+	- Oauth (google/facebook)
+	
+4,Web crawler Data
+	- 100,000 sneaker information
